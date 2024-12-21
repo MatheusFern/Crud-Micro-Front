@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Select from "react-select";
-import { Box, VStack,Spinner, Text,Group  } from "@chakra-ui/react";
+import { Box, VStack, Spinner, Text, Group } from "@chakra-ui/react";
 import Layout from "./components/layout";
 import AddButton from "./components/Addbutton";
 import ListItem from "./components/ListItem";
@@ -41,11 +41,12 @@ function App() {
       setLoading(true);
     } catch (err) {
       setError(true);
+      console.log("ih deu ruim");
     }
   };
 
   const handleSubmitFilter = async (type: string) => {
-      try {
+    try {
       const filteredUsers = await FilterUsersByType(type);
       setUsers(filteredUsers?.data);
     } catch (error) {
@@ -89,6 +90,7 @@ function App() {
                 <Button
                   colorPalette={"teal"}
                   _active={{ transform: "scale(0.85)" }}
+                  onClick={() => fetchUsers()}
                 >
                   <IoMdRefresh /> atualizar
                 </Button>
