@@ -15,10 +15,8 @@ import { MdOutlinePersonAddAlt } from "react-icons/md";
 import { useState } from "react";
 import Select from "react-select";
 import UserHandler from "../utils/helperFuncions";
-import { toaster } from "@/components/ui/toaster";
 import toast, { Toaster } from "react-hot-toast";
 
-const notify = () => toast.success("Successfully created!");
 
 interface UserData {
   nome: string;
