@@ -1,27 +1,36 @@
-import { Box, Heading, HStack, Icon, IconButton, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  HStack,
+  Icon,
+  IconButton,
+  Text,
+  SimpleGrid,
+} from "@chakra-ui/react";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { MdEditDocument, MdPerson } from "react-icons/md";
 interface User {
   Nome: string;
   Telefone: string;
-  email:string;
-  Datacadastro:string;
-  id:string
+  email: string;
+  Datacadastro: string;
+  id: string;
 }
 
 export default function ListItem(Item: User) {
   return (
-    <HStack
+    <SimpleGrid
+      minChildWidth="sm"
       bg={"#ffffff"}
       borderRadius={15}
-      justifyContent={'space-between'}
       my={2}
       px={10}
       py={2}
+      alignItems={"center"}
     >
       <HStack>
-        <Box padding={4} bg={"#f0fcf8"} borderRadius={30}>
-          <Icon fontSize="30px" radius={5}>
+        <Box padding={4} bg={"teal.100"} borderRadius={30}>
+          <Icon fontSize="30px" radius={5} color={"teal.500"}>
             <MdPerson />
           </Icon>
         </Box>
@@ -31,7 +40,7 @@ export default function ListItem(Item: User) {
             {Item.Telefone}
           </Text>
           <Text textStyle="sm" fontWeight="semibold">
-          {Item.email}
+            {Item.email}
           </Text>
         </Box>
       </HStack>
@@ -42,7 +51,7 @@ export default function ListItem(Item: User) {
           Data de cadastro
         </Text>
         <Text textStyle="sm" fontWeight="semibold">
-        {Item.Datacadastro}
+          {Item.Datacadastro}
         </Text>
       </Box>
       <Box>
@@ -63,6 +72,6 @@ export default function ListItem(Item: User) {
           <FaRegTrashCan />
         </IconButton>
       </Box>
-    </HStack>
+    </SimpleGrid>
   );
 }

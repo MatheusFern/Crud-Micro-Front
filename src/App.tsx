@@ -106,6 +106,22 @@ function App() {
             bg={"teal"}
             padding={2}
             overflow="auto"
+            css={{
+              "&::-webkit-scrollbar": {
+                width: "6px",
+                marginX: "5px"
+              },
+              "&::-webkit-scrollbar-thumb": {
+                background: "teal.500",
+                borderRadius: "10px",
+              },
+              "&::-webkit-scrollbar-thumb:hover": {
+                background: "gray.500",
+              },
+              "&::-webkit-scrollbar-track": {
+                background: "gray.200",
+              },
+            }}
           >
             {loading ? (
               <>
