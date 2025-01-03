@@ -6,6 +6,8 @@ import {
   IconButton,
   Text,
   SimpleGrid,
+  Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { MdEditDocument, MdPerson } from "react-icons/md";
@@ -19,41 +21,47 @@ interface User {
 
 export default function ListItem(Item: User) {
   return (
-    <SimpleGrid
-      minChildWidth="sm"
+    <Grid
+      templateColumns="repeat(4, 1fr)"
+      gap="6"
       bg={"#ffffff"}
       borderRadius={15}
       my={2}
       px={10}
       py={2}
       alignItems={"center"}
+      color={"teal"}
     >
-      <HStack>
-        <Box padding={4} bg={"teal.100"} borderRadius={30}>
-          <Icon fontSize="30px" radius={5} color={"teal.500"}>
-            <MdPerson />
-          </Icon>
-        </Box>
-        <Box justifyItems={"flex-start"} ml={4}>
-          <Heading size="sm">{Item.Nome}</Heading>
+      <GridItem colSpan={2}>
+        <HStack>
+          <Box padding={4} bg={"teal.100"} borderRadius={30}>
+            <Icon fontSize="30px" radius={5} color={"teal.500"}>
+              <MdPerson />
+            </Icon>
+          </Box>
+          <Box justifyItems={"flex-start"} ml={4}>
+            <Heading size="sm">{Item.Nome}</Heading>
+            <Text textStyle="sm" fontWeight="semibold">
+              {Item.Telefone}
+            </Text>
+            <Text textStyle="sm" fontWeight="semibold">
+              {Item.email}
+            </Text>
+          </Box>
+        </HStack>
+      </GridItem>
+      <GridItem colSpan={1}>
+        <Box>
+          {" "}
           <Text textStyle="sm" fontWeight="semibold">
-            {Item.Telefone}
+            Data de cadastro
           </Text>
           <Text textStyle="sm" fontWeight="semibold">
-            {Item.email}
+            {Item.Datacadastro}
           </Text>
         </Box>
-      </HStack>
-
-      <Box>
-        {" "}
-        <Text textStyle="sm" fontWeight="semibold">
-          Data de cadastro
-        </Text>
-        <Text textStyle="sm" fontWeight="semibold">
-          {Item.Datacadastro}
-        </Text>
-      </Box>
+      </GridItem>
+      <GridItem colSpan={1}>
       <Box>
         <IconButton
           aria-label="edit user"
@@ -72,6 +80,9 @@ export default function ListItem(Item: User) {
           <FaRegTrashCan />
         </IconButton>
       </Box>
-    </SimpleGrid>
+      </GridItem>
+
+    
+    </Grid>
   );
 }
