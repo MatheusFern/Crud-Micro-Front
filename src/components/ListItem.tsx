@@ -18,6 +18,11 @@ interface User {
   id: string;
 }
 
+function formatDate(dateString: string) {
+  const [year, month, day] = dateString.split("-");
+  return `${day}-${month}-${year}`;
+}
+
 export default function ListItem(Item: User) {
   return (
     <Grid
@@ -56,7 +61,7 @@ export default function ListItem(Item: User) {
             Data de cadastro
           </Text>
           <Text textStyle="sm" fontWeight="semibold">
-            {Item.Datacadastro}
+            {formatDate(Item.Datacadastro) }
           </Text>
         </Box>
       </GridItem>

@@ -2,7 +2,17 @@
 
 import { useEffect, useState } from "react";
 import Select from "react-select";
-import { Box, VStack, Spinner, Text, Group,IconButton, HStack } from "@chakra-ui/react";
+import {
+  Box,
+  VStack,
+  Spinner,
+  Text,
+  Group,
+  IconButton,
+  HStack,
+  Grid,
+  GridItem,
+} from "@chakra-ui/react";
 import Layout from "./components/layout";
 import AddButton from "./components/Addbutton";
 import ListItem from "./components/ListItem";
@@ -63,40 +73,53 @@ function App() {
   return (
     <>
       <Layout>
-        <Box
-          display={"flex"}
-          flexDirection={"row"}
-          alignContent={"center"}
-          alignSelf={"flex-end"}
+        <Grid
+          templateColumns="repeat(12, 1fr)"
+          gap="6"
+          borderRadius={15}
+          // my={2}
+          // px={10}
+          // py={2}
+         
+          color={"teal"}
         >
-          
-          <Select
-            placeholder={"Filtrar por:"}
-            onChange={(selectedOption) =>
-              handleSubmitFilter(selectedOption?.value || "")
-            }
-            options={options}
-          />
-          <HStack>
-          <IconButton
+          <GridItem colSpan={2}>
+            <Select
+              placeholder={"Filtrar por:"}
+              onChange={(selectedOption) =>
+                handleSubmitFilter(selectedOption?.value || "")
+              }
+              options={options}
+            />
+          </GridItem>
+          <GridItem colSpan={7}>
+        
+          </GridItem>
+
+          <GridItem colSpan={3}>
+            <HStack>
+            <IconButton
               colorPalette={"teal"}
               mx={1}
               px={1}
               aria-label="Reset"
               _active={{ transform: "scale(0.85)" }}
               variant={"ghost"}
-              onClick={()=> fetchUsers()}
+              onClick={() => fetchUsers()}
               rounded={5}
             >
-              <FaArrowsRotate/>Atualizar
+              <FaArrowsRotate />
+              Atualizar
             </IconButton>
+            <Box ml={2}>
+              <AddButton />
+            </Box>
+            </HStack>
           
+          </GridItem>
+         
+        </Grid>
 
-          <Box ml={2}>
-            <AddButton />
-          </Box>
-          </HStack>
-        </Box>
         {error ? (
           <>
             <EmptyState
@@ -127,7 +150,7 @@ function App() {
             css={{
               "&::-webkit-scrollbar": {
                 width: "6px",
-                marginX: "5px"
+                marginX: "5px",
               },
               "&::-webkit-scrollbar-thumb": {
                 background: "teal.500",
