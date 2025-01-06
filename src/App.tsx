@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Select from "react-select";
-import { Box, VStack, Spinner, Text, Group } from "@chakra-ui/react";
+import { Box, VStack, Spinner, Text, Group,IconButton, HStack } from "@chakra-ui/react";
 import Layout from "./components/layout";
 import AddButton from "./components/Addbutton";
 import ListItem from "./components/ListItem";
@@ -11,6 +11,8 @@ import { Button } from "@/components/ui/button";
 import { FaRobot } from "react-icons/fa6";
 import { IoMdRefresh } from "react-icons/io";
 import UserHandler from "./utils/helperFuncions";
+import { MdFilterAltOff } from "react-icons/md";
+import { FaArrowsRotate } from "react-icons/fa6";
 import "./App.css";
 
 const options = [
@@ -67,6 +69,7 @@ function App() {
           alignContent={"center"}
           alignSelf={"flex-end"}
         >
+          
           <Select
             placeholder={"Filtrar por:"}
             onChange={(selectedOption) =>
@@ -74,10 +77,25 @@ function App() {
             }
             options={options}
           />
+          <HStack>
+          <IconButton
+              colorPalette={"teal"}
+              mx={1}
+              px={1}
+              aria-label="Reset"
+              _active={{ transform: "scale(0.85)" }}
+              variant={"ghost"}
+              onClick={()=> fetchUsers()}
+              rounded={5}
+            >
+              <FaArrowsRotate/>Atualizar
+            </IconButton>
+          
 
           <Box ml={2}>
             <AddButton />
           </Box>
+          </HStack>
         </Box>
         {error ? (
           <>

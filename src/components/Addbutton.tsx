@@ -55,7 +55,7 @@ export default function AddButton(): JSX.Element {
 
     try {
       await CreateUser(userData);
-      toast.success("Successfully created!");
+      toast.success("Usuario cadastrado com sucesso!");
     } catch (error) {
       console.log(error);
     }

@@ -5,12 +5,11 @@ import {
   Icon,
   IconButton,
   Text,
-  SimpleGrid,
   Grid,
   GridItem,
 } from "@chakra-ui/react";
-import { FaRegTrashCan } from "react-icons/fa6";
 import { MdEditDocument, MdPerson } from "react-icons/md";
+import DeleteButton from "./DeleteButton";
 interface User {
   Nome: string;
   Telefone: string;
@@ -62,27 +61,18 @@ export default function ListItem(Item: User) {
         </Box>
       </GridItem>
       <GridItem colSpan={1}>
-      <Box>
-        <IconButton
-          aria-label="edit user"
-          marginX={2}
-          bg={"#386be0"}
-          _active={{ transform: "scale(0.85)" }}
-        >
-          <MdEditDocument />
-        </IconButton>
-        <IconButton
-          aria-label="delete user"
-          marginX={2}
-          bg={"#e03843"}
-          _active={{ transform: "scale(0.85)" }}
-        >
-          <FaRegTrashCan />
-        </IconButton>
-      </Box>
+        <Box>
+          <IconButton
+            aria-label="edit user"
+            marginX={2}
+            bg={"#386be0"}
+            _active={{ transform: "scale(0.85)" }}
+          >
+            <MdEditDocument />
+          </IconButton>
+          <DeleteButton Nome={Item.Nome} id={Item.id} />
+        </Box>
       </GridItem>
-
-    
     </Grid>
   );
 }

@@ -32,6 +32,14 @@ export default function User() {
       handleApiError(error);
     }
   };
+  const DeleteUser = async (id: string) => {
+    try {
+      const response = await api.delete(`/users/${id}`);
+      return response;
+    } catch (error) {
+      handleApiError(error);
+    }
+  };
 
-  return { GetUsers, CreateUser, FilterUsersByType };
+  return { GetUsers, CreateUser, FilterUsersByType, DeleteUser };
 }
