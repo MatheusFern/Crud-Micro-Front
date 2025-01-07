@@ -32,6 +32,16 @@ export default function User() {
       handleApiError(error);
     }
   };
+  const UpdateUser = async (id:string,params: any) => {
+    try {
+      const response = await api.put(`/users/${id}`, params);
+
+      return response;
+    } catch (error) {
+      handleApiError(error);
+    }
+  }
+  
   const DeleteUser = async (id: string) => {
     try {
       const response = await api.delete(`/users/${id}`);
@@ -41,5 +51,6 @@ export default function User() {
     }
   };
 
-  return { GetUsers, CreateUser, FilterUsersByType, DeleteUser };
+
+  return { GetUsers, CreateUser, FilterUsersByType, DeleteUser,UpdateUser };
 }

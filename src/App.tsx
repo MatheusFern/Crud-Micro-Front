@@ -23,6 +23,8 @@ import { IoMdRefresh } from "react-icons/io";
 import UserHandler from "./utils/helperFuncions";
 import { MdFilterAltOff } from "react-icons/md";
 import { FaArrowsRotate } from "react-icons/fa6";
+
+
 import "./App.css";
 
 const options = [
@@ -127,15 +129,7 @@ function App() {
               title="Algo deu Errado"
               description="Por favor tente atualizar a lista"
             >
-              <Group>
-                <Button
-                  colorPalette={"teal"}
-                  _active={{ transform: "scale(0.85)" }}
-                  onClick={() => fetchUsers()}
-                >
-                  <IoMdRefresh /> atualizar
-                </Button>
-              </Group>
+              
             </EmptyState>
           </>
         ) : (

@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { MdEditDocument, MdPerson } from "react-icons/md";
 import DeleteButton from "./DeleteButton";
+import UpdateButton from "./UpdateButton";
 interface User {
   Nome: string;
   Telefone: string;
@@ -44,12 +45,12 @@ export default function ListItem(Item: User) {
             </Icon>
           </Box>
           <Box justifyItems={"flex-start"} ml={4}>
-            <Heading size="sm">{Item.Nome}</Heading>
+            <Heading size="sm">{Item.Nome ? Item.Nome : ''}</Heading>
             <Text textStyle="sm" fontWeight="semibold">
-              {Item.Telefone}
+              {Item.Telefone ? Item.Telefone : ''}
             </Text>
             <Text textStyle="sm" fontWeight="semibold">
-              {Item.email}
+              {Item.email ? Item.email : ''}
             </Text>
           </Box>
         </HStack>
@@ -61,20 +62,13 @@ export default function ListItem(Item: User) {
             Data de cadastro
           </Text>
           <Text textStyle="sm" fontWeight="semibold">
-            {formatDate(Item.Datacadastro) }
+            { Item.Datacadastro? formatDate(Item.Datacadastro): "" }
           </Text>
         </Box>
       </GridItem>
       <GridItem colSpan={1}>
         <Box>
-          <IconButton
-            aria-label="edit user"
-            marginX={2}
-            bg={"#386be0"}
-            _active={{ transform: "scale(0.85)" }}
-          >
-            <MdEditDocument />
-          </IconButton>
+        <UpdateButton Nome={Item.Nome} id={Item.id} email={Item.email} Telefone={Item.Telefone} Datacadastro={Item.Datacadastro}/>
           <DeleteButton Nome={Item.Nome} id={Item.id} />
         </Box>
       </GridItem>
