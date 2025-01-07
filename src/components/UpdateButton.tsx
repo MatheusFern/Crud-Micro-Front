@@ -55,7 +55,7 @@ export default function DeleteButton(Item: UserData): JSX.Element {
 
     try {
       await UpdateUser(Item.id, userData);
-      toast.success("Usuario cadastrado com sucesso!");
+      toast.success("Usuario atualizado com sucesso!");
     } catch (error) {
       console.log(error);
     }
